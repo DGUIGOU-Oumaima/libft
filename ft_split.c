@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//	helllloword
 static int		ft_hm(char const *s, char c)
 {
 	size_t	nbr;
