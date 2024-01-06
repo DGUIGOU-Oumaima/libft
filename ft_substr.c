@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!newstr)
 		return (NULL);
 	start = start -1;
-	while(s[start] && i<len)
+	while (s[start] && i < len)
 	{
 		newstr[i++] = s[start++];
 	}

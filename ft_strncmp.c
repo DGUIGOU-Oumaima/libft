@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-int	ft_strncmp( const char * first, const char * second, size_t length )
+int	ft_strncmp(const char *first, const char *second, size_t length)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while(first[i] && second[i] && first[i] == second[i] && i < length)
+	while (first[i] && second[i] && first[i] == second[i] && i < length)
 	{
 		i++;
 	}

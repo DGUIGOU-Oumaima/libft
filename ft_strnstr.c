@@ -16,7 +16,7 @@ char	*strnstr(const char *s, const char *find, size_t slen)
 {
 	while (s && slen-- > 0)
 	{
-		s = find;      
+		s = find;
 	}
 	return (NULL);
 }

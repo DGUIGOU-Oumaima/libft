@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *destination,  char *source, size_t destinationsize)
+size_t	ft_strlcpy(char *destination, char *source, size_t destinationsize)
 {
-	size_t source_len;
-	size_t i;
+	size_t	source_len;
+	size_t	i;
 
 	source_len = ft_strlen(source);
 	i = 0;
-	while(source[i] && i < destinationsize - 1)
+	while (source[i] && i < destinationsize - 1)
 	{
 		destination[i] = source[i];
 		i++;

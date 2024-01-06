@@ -18,6 +18,6 @@ int	ft_isalpha(int c)
 		return (1);
 	if (c >= 'a' && c <= 'z' )
 		return (2);
-	else 
+	else
 		return (0);
 }

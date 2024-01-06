@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void	*ft_memset(void *pointer, int value, size_t count){
-	
-	while(count --)
+void	*ft_memset(void *pointer, int value, size_t count)
+{
+	while (count --)
 	{
 		*((unsigned char *) pointer + count) = (unsigned char) value;
 	}
-	return pointer;
+	return (pointer);
 }
