@@ -16,17 +16,23 @@ static	size_t	get_len(int n)
 {
 	size_t	len;
 
-	len = 1;
-	while (n /= 10)
+	if (n < 0)
+		len = 1;
+	else
+		len = 0;
+	while (n > 0)
+	{
+		n /= 10;
 		len++;
+	}
 	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	len;
+	size_t		len;
 	long int	m;
-	char	*str;
+	char		*str;
 
 	len = get_len(n);
 	m = n;
@@ -35,7 +41,8 @@ char	*ft_itoa(int n)
 		len++;
 		m *= -1;
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	*(str + len) = '\0';
 	while (len--)

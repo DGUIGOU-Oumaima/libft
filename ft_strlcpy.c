@@ -19,7 +19,9 @@ size_t	ft_strlcpy(char *destination, char *source, size_t destinationsize)
 
 	source_len = ft_strlen(source);
 	i = 0;
-	while (source[i] && i < destinationsize - 1)
+	if (!destinationsize)
+		return (source_len);
+	while (source[i] && (i + 1) < destinationsize)
 	{
 		destination[i] = source[i];
 		i++;

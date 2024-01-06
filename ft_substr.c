@@ -21,18 +21,28 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
-		return ((char *) calloc(1, sizeof(char)));
-	if (ft_strlen(s) <= len + start)
-		newstr = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
-	else
+		return (ft_strdup(""));
+	if (ft_strlen(s) < len + start)
+	{
+		len = ft_strlen(s) - start;
 		newstr = malloc(sizeof(char) * (len + 1));
+	}
+	else
+	{
+		len = ft_strlen(s);
+		newstr = malloc(sizeof(char) * (len + 1));
+	}
 	if (!newstr)
 		return (NULL);
-	start = start -1;
-	while (s[start] && i < len)
+	// start = start -1;
+	while (i < len)
 	{
 		newstr[i++] = s[start++];
 	}
 	newstr[i] = '\0';
 	return (newstr);
 }
+// #include "libc.h"
+// int main(){
+// 	printf("%s", ft_substr("hello", 0, 1));
+// }

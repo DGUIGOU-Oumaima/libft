@@ -14,9 +14,9 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	count;
-	t_list	*help;	
-	
+	int		count;
+	t_list	*help;
+
 	count = 0;
 	help = lst;
 	while (help)

@@ -20,3 +20,14 @@ void	*ft_memset(void *pointer, int value, size_t count)
 	}
 	return (pointer);
 }
+// #include <libc.h>
+// int main ()
+// {
+// 	int x = 13;
+
+// 	ft_memset(&x, 255, 4);
+// 	ft_memset(&x, 255, 3);
+// 	// ft_memset(&x, 255, 2);
+// 	// ft_memset(&x, 255, 1);
+// 	printf("%d", x);
+// }

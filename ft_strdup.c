@@ -6,7 +6,7 @@
 /*   By: odguigou <odguigou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:00:54 by odguigou          #+#    #+#             */
-/*   Updated: 2024/01/06 10:49:23 by odguigou         ###   ########.fr       */
+/*   Updated: 2024/01/06 16:01:14 by odguigou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ char    *ft_strdup(const char *s1)
     i = 0;
     while (s1[i])
         i++;
-    new_str = malloc(sizeof(char) * i);
+    new_str = malloc(sizeof(char) * i + 1);
     if (new_str == NULL)
-        return (new_str);
+        return (NULL);
     i = 0;
     while (s1[i])
     {
         new_str[i] = s1[i];
         i++;
     }
-    new_str[i] = "\0";
+    new_str[i] = '\0';
     return (new_str);
 }

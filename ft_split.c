@@ -28,7 +28,7 @@ int	safe_malloc(char **token_v, int pos, int len)
 	return (0);
 }
 
-int	fill(char **token_v, char const *s, char c)
+int	fill(char **token_v, char  const *s, char c)
 {
 	int	i;
 	int	len;
@@ -48,7 +48,7 @@ int	fill(char **token_v, char const *s, char c)
 		{
 			if (safe_malloc(token_v, i, len + 1))
 				return (1);
-			ft_strlcpy(token_v[i], s - len, len);
+			ft_strlcpy(token_v[i], ((char *)&s[len]), len);
 		}
 		i++;
 	}
