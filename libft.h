@@ -6,17 +6,15 @@
 /*   By: odguigou <odguigou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 20:46:47 by odguigou          #+#    #+#             */
-/*   Updated: 2024/01/06 15:55:37 by odguigou         ###   ########.fr       */
+/*   Updated: 2024/01/07 21:30:29 by odguigou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 
 typedef struct s_list
 {
@@ -32,13 +30,13 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+void	*ft_calloc(size_t Count, size_t Size);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 void	*ft_memchr( const void *memoryBlock, int searchedChar, size_t size );
@@ -55,16 +53,16 @@ char	*ft_strchr( const char *string, int searchedChar );
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcpy(char *destination, char *source, size_t destinationsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *first, const char *second, size_t length);
-char	*strnstr(const char *s, const char *find, size_t slen);
+char	*ft_strnstr(const char *mstr, const char *srch, size_t len);
 char	*ft_strrchr(const char *string, int searchedChar);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
-char    *ft_strdup(const char *s1);
+char	*ft_strdup(const char *s1);
 
 #endif

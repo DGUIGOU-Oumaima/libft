@@ -63,13 +63,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-#include <stdio.h>
-int main()
-{
-    int x = -65;
-    char *resultat = ft_itoa(x);
-    printf("%s", resultat);
-
-    return 0;
-}

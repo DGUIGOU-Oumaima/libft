@@ -29,13 +29,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-#include <stdio.h>
-#include <string.h>
-int main(){
-	char s[] = "oumaimadguigououmaima";
-	char *ptr = (char *)memchr(s, 'm', 9);
-	char *ptr1 = (char *)ft_memchr(s, 'm', 9);
-	printf("%s\n", ptr);
-	printf("%s", ptr1);
-}

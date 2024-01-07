@@ -6,7 +6,7 @@
 /*   By: odguigou <odguigou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 11:00:54 by odguigou          #+#    #+#             */
-/*   Updated: 2024/01/06 16:01:14 by odguigou         ###   ########.fr       */
+/*   Updated: 2024/01/07 19:49:51 by odguigou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*ft_strdup(const char *s1)
 		str[i] = s1[i];
 		i++;
 	}
-	str[i] = 0;
+	str[i] = '\0';
 	return (str);
 }

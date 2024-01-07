@@ -36,12 +36,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-
-#include <stdio.h>
-#include <string.h>
-int main(){
-	char s1[] = "oumaimadguigou";
-	char s2[] = "rawane";
-	printf("%s \n", ft_memmove(s1, s2, 5));
-	printf("%s \n", memmove(s1, s2, 5));
-}

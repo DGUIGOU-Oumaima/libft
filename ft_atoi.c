@@ -34,13 +34,3 @@ int	ft_atoi(const char *str)
 		res = res * 10 + str[i++] - 48;
 	return (res * sign);
 }
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int main()
-{
-	char *t = "2147483649";
-	printf("%d \n", ft_atoi(t));
-	printf("%d \n", atoi(t));
-}

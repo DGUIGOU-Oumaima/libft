@@ -24,14 +24,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
- #include <stdio.h>
- int main ()
- {
-	int x = 13;
-
-	ft_memset(&x, 255, 4);
-	ft_memset(&x, 255, 3);
-	ft_memset(&x, 255, 2);
- 	ft_memset(&x, 255, 1);
- 	printf("%d", x);
- }

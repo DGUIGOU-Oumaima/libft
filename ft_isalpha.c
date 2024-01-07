@@ -19,10 +19,3 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-
-#include <stdio.h>
-int main(){
-	int x = 68;
-	char y = 'e';
-	printf("%d", ft_isalpha(y));
-}

@@ -25,35 +25,3 @@ void	ft_bzero(void *dst, size_t n)
 		i++;
 	}
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
-
-int main() {
-    char i_array[10]   = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
-    char s_array[12] = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    size_t pos = 0;
- 
-    ft_bzero(i_array, 2);
-    ft_bzero(s_array, 3);*/
-	/*
-	int i_array[10]   = {7, 7, 7, 7, 7, 7, 7, 7, 7, 7};
-    short s_array[12] = {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    size_t pos = 0;
- 
-    ft_bzero(i_array, sizeof(int)*2);
-    ft_bzero(s_array,sizeof(short)*3);
-	*/
- /*
-    for(; pos < 10; pos++) {
-        printf("%d: %d\n", (pos + 1), i_array[pos]);
-    }
- 
-    for(pos = 0; pos < 12; pos++) {
-        printf("%d: %d\n", (pos + 1), s_array[pos]);
-    }
- 
-    return 0;
-}
-*/

@@ -30,11 +30,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (d);
 }
-#include <stdio.h>
-#include <string.h>
-int main(){
-	char s1[] = "ouma";
-	char s2[] = "hellkobhbhjb";
-	printf("%s \n", ft_memcpy(s1, s2, 5));
-	printf("%s \n", memcpy(s1, s2, 5));
-}
