@@ -12,13 +12,32 @@
 
 #include "libft.h"
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t Count, size_t Size)
 {
 	void	*memory;
-
-	memory = malloc(elementSize * elementCount);
+	if (Count && Size && Count > (SIZE_MAX / Size))
+		return (0);
+	memory = malloc(Size * Count);
 	if (memory == NULL)
-		return (memory);
-	ft_bzero(memory, elementSize * elementCount);
+		return (0);
+	ft_bzero(memory, Size * Count);
 	return (memory);
+}
+#include <stdio.h>
+int main(){
+	int *tab;
+	int j = 7;
+	tab = ft_calloc(5, sizeof(int));
+	for(int i=0; i<5; i++)
+	{
+		printf("%d \n", tab[i]);
+	}
+	for(int i=0; i<5; i++)
+	{
+		tab[i] = j++;
+	}
+	for(int i=0; i<5; i++)
+	{
+		printf("%d \n", tab[i]);
+	}
 }

@@ -12,68 +12,68 @@
 
 #include "libft.h"
 
-int	safe_malloc(char **token_v, int pos, int len)
+int	safe_malloc(char **token_v, int position, size_t buffer)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	token_v[pos] = malloc(len * sizeof(char));
-	if (token_v[pos] == NULL)
+	token_v[position] = malloc(buffer);
+	if (NULL == token_v[position])
 	{
-		while (i < pos)
-			free(token_v[i]);
+		while (i < position)
+			free(token_v[i++]);
 		free(token_v);
 		return (1);
 	}
 	return (0);
 }
 
-int	fill(char **token_v, char  const *s, char c)
+int	fill(char **token_v, char const *s, char delimeter)
 {
-	int	i;
-	int	len;
+	size_t	len;
+	int		i;
 
 	i = 0;
-	while (s)
+	while (*s)
 	{
 		len = 0;
-		while (*s == c)
-			s++;
-		while (*s != c)
+		while (*s == delimeter && *s)
+			++s;
+		while (*s != delimeter && *s)
 		{
-			len++;
-			s++;
+			++len;
+			++s;
 		}
 		if (len)
 		{
-			if (safe_malloc(token_v, i, len + 1))
-				return (1);
-			ft_strlcpy(token_v[i], ((char *)&s[len]), len);
+			 if (safe_malloc(token_v, i, len + 1))
+				   return (1);
+		  ft_strlcpy(token_v[i], s - len, len + 1);
 		}
-		i++;
+		++i;
 	}
 	return (0);
 }
 
-int	count_tokens(char const *s, char c)
+size_t	count_tokens(char const *s, char delimeter)
 {
-	int	tokens;
-	int	check;
+	size_t	tokens;
+	int		inside_token;
 
 	tokens = 0;
-	while (s)
+	while (*s)
 	{
-		check = 0;
-		while (s && *s == c)
-			s++;
-		while (s && *s != c)
+		inside_token = 0;
+		while (*s == delimeter && *s)
+			++s;
+		while (*s != delimeter && *s)
 		{
-			if (!check)
+			if (!inside_token)
 			{
-				tokens++;
-				check = 1;
+				++tokens;
+				inside_token = 42;
 			}
-			s++;
+			++s;
 		}
 	}
 	return (tokens);
@@ -81,15 +81,15 @@ int	count_tokens(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int	tokens;
+	size_t	tokens;
 	char	**token_v;
 
-	tokens = 0;
-	if (!s && !*s)
+	if (NULL == s)
 		return (NULL);
+	tokens = 0;
 	tokens = count_tokens(s, c);
-	token_v = malloc((tokens + 1) * sizeof(char));
-	if (token_v == NULL)
+	token_v = malloc((tokens + 1) * sizeof(char *));
+	if (NULL == token_v)
 		return (NULL);
 	token_v[tokens] = NULL;
 	if (fill(token_v, s, c))

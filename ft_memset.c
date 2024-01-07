@@ -12,22 +12,26 @@
 
 #include "libft.h"
 
-void	*ft_memset(void *pointer, int value, size_t count)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	while (count --)
-	{
-		*((unsigned char *) pointer + count) = (unsigned char) value;
-	}
-	return (pointer);
-}
-// #include <libc.h>
-// int main ()
-// {
-// 	int x = 13;
+	size_t	i;
 
-// 	ft_memset(&x, 255, 4);
-// 	ft_memset(&x, 255, 3);
-// 	// ft_memset(&x, 255, 2);
-// 	// ft_memset(&x, 255, 1);
-// 	printf("%d", x);
-// }
+	i = 0;
+	while (i < len)
+	{
+		*(unsigned char *)(b + i) = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}
+ #include <stdio.h>
+ int main ()
+ {
+	int x = 13;
+
+	ft_memset(&x, 255, 4);
+	ft_memset(&x, 255, 3);
+	ft_memset(&x, 255, 2);
+ 	ft_memset(&x, 255, 1);
+ 	printf("%d", x);
+ }

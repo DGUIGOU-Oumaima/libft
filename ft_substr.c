@@ -15,34 +15,23 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	char	*newstr;
+	char	*str;
 
 	i = 0;
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
-	if (ft_strlen(s) < len + start)
-	{
+	if (start + len > ft_strlen(s))
 		len = ft_strlen(s) - start;
-		newstr = malloc(sizeof(char) * (len + 1));
-	}
-	else
-	{
-		len = ft_strlen(s);
-		newstr = malloc(sizeof(char) * (len + 1));
-	}
-	if (!newstr)
+	str = (char *)malloc(len + 1);
+	if (!str)
 		return (NULL);
-	// start = start -1;
 	while (i < len)
 	{
-		newstr[i++] = s[start++];
+		str[i] = s[start + i];
+		i++;
 	}
-	newstr[i] = '\0';
-	return (newstr);
+	str[len] = '\0';
+	return (str);
 }
-// #include "libc.h"
-// int main(){
-// 	printf("%s", ft_substr("hello", 0, 1));
-// }

@@ -12,11 +12,23 @@
 
 #include "libft.h"
 
-char	*strnstr(const char *s, const char *find, size_t slen)
+char	*ft_strnstr(const char *mstr, const char *srch, size_t len)
 {
-	while (s && slen-- > 0)
+	size_t	size;
+
+	if (!mstr && !len)
+		return (0);
+	size = ft_strlen(srch);
+	if (size == 0 || srch == mstr)
+		return ((char *)mstr);
+	while (*mstr && size <= len)
 	{
-		s = find;
+		if (*mstr == srch[0] && ft_strncmp(mstr, srch, size) == 0)
+		{
+			return ((char *)mstr);
+		}
+		mstr++;
+		len--;
 	}
 	return (NULL);
 }

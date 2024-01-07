@@ -12,31 +12,29 @@
 
 #include "libft.h"
 
-static	size_t	ft_minimum(size_t x, size_t y)
-{
-	if (x < y)
-		return (x);
-	return (y);
-}
-
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dst_len;
-	size_t	src_len;
 	size_t	i;
-	size_t	resultat;
+	size_t	ild;
+	size_t	srclen;
 
 	i = 0;
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	resultat = src_len + ft_minimum(dst_len, dstsize);
-	if (dstsize == 0)
-		return (resultat);
-	while (src[i] && dst_len + i < dstsize - 1)
+	ild = 0;
+	srclen = ft_strlen(src);
+	if (!dst && !dstsize)
+		return (srclen);
+	while (dst[ild] && ild < dstsize)
 	{
-		dst[dst_len + i] = src[i];
+		ild++;
+	}
+	while (src[i] && ild + i + 1 < dstsize)
+	{
+		dst[ild + i] = src[i];
 		i++;
 	}
-	dst[dst_len + i] = '\0';
-	return (resultat);
+	if (ild + i < dstsize)
+	{
+		dst[ild + i] = '\0';
+	}
+	return (ild + srclen);
 }

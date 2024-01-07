@@ -12,17 +12,29 @@
 
 #include "libft.h"
 
-void	*ft_memcpy(void *destination, const void *source, size_t size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	
-	if (!destination && !source)
-		return (0);
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*d;
+
 	i = 0;
-	while (i < size)
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (!d && !s)
+		return (NULL);
+	while (i < n)
 	{
-		*((unsigned char *)(destination + i)) = *((unsigned char *)(source + i));
+		d[i] = s[i];
 		i++;
 	}
-	return (destination);
+	return (d);
+}
+#include <stdio.h>
+#include <string.h>
+int main(){
+	char s1[] = "ouma";
+	char s2[] = "hellkobhbhjb";
+	printf("%s \n", ft_memcpy(s1, s2, 5));
+	printf("%s \n", memcpy(s1, s2, 5));
 }

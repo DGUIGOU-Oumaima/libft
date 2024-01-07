@@ -12,34 +12,21 @@
 
 #include "libft.h"
 
-int	help(char x, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == x)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	debut;
-	int	fin;
+	size_t	size;
+	char	*new;
 
-	debut = 0;
-	fin = strlen(s1) - 1;
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
-	while (s1[debut] && help(s1[debut], set))
-		debut ++;
-	while (s1[fin] && help(s1[fin], set))
-		fin--;
-	if (fin == -1)
-		return (ft_substr(s1, debut, 0));
-	return (ft_substr(s1, debut, (fin - debut +2)));
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size > 0 && ft_strchr(set, s1[size - 1]))
+		size--;
+	new = (char *)malloc((size + 1));
+	if (!new)
+		return (NULL);
+	ft_strlcpy(new, s1, size + 1);
+	return (new);
 }

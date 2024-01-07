@@ -14,14 +14,34 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			n;
+
 	if (!dst && !src)
 		return (NULL);
-	if (dst < src)
-		ft_memcpy(dst, src, len);
-	else
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	n = 0;
+	if (d > s)
 	{
-		while (len--)
-			*((unsigned char *)(dst + len)) = *((unsigned char *)(src + len));
+		n = len;
+		while (n-- > 0)
+			d[n] = s[n];
+	}
+	while (n < len)
+	{
+		d[n] = s[n];
+		n++;
 	}
 	return (dst);
+}
+
+#include <stdio.h>
+#include <string.h>
+int main(){
+	char s1[] = "oumaimadguigou";
+	char s2[] = "rawane";
+	printf("%s \n", ft_memmove(s1, s2, 5));
+	printf("%s \n", memmove(s1, s2, 5));
 }
