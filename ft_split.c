@@ -12,87 +12,94 @@
 
 #include "libft.h"
 
-int	safe_malloc(char **token_v, int position, size_t buffer)
+static int	ft_count_w(char const *str, char c)
 {
-	int		i;
+	int	i;
+	int	count;
 
 	i = 0;
-	token_v[position] = malloc(buffer);
-	if (NULL == token_v[position])
+	count = 0;
+	while (str[i])
 	{
-		while (i < position)
-			free(token_v[i++]);
-		free(token_v);
-		return (1);
+		if (str[i] == c)
+			i++;
+		else
+		{
+			count++;
+			while (str[i] && str[i] != c)
+				i++;
+		}
 	}
+	return (count);
+}
+
+static char	**free_arr(char **ptr, int i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(ptr[i]);
+	}
+	free(ptr);
 	return (0);
 }
 
-int	fill(char **token_v, char const *s, char delimeter)
+static char	*ft_put_word(char *word, char const *s, int i, int word_len)
 {
-	size_t	len;
-	int		i;
+	int	x;
 
-	i = 0;
-	while (*s)
+	x = 0;
+	while (word_len > 0)
 	{
-		len = 0;
-		while (*s == delimeter && *s)
-			++s;
-		while (*s != delimeter && *s)
-		{
-			++len;
-			++s;
-		}
-		if (len)
-		{
-			if (safe_malloc(token_v, i, len + 1))
-				return (1);
-			ft_strlcpy(token_v[i], s - len, len + 1);
-		}
-		++i;
+		word[x] = s[i - word_len];
+		x++;
+		word_len--;
 	}
-	return (0);
+	word[x] = '\0';
+	return (word);
 }
 
-size_t	count_tokens(char const *s, char delimeter)
+static char	**ft_split_words(const char *s, char c, char **sfinal,
+int num_words)
 {
-	size_t	tokens;
-	int		inside_token;
+	int	i;
+	int	word;
+	int	word_len;
 
-	tokens = 0;
-	while (*s)
+	i = 0;
+	word = 0;
+	word_len = 0;
+	while (word < num_words)
 	{
-		inside_token = 0;
-		while (*s == delimeter && *s)
-			++s;
-		while (*s != delimeter && *s)
+		while (s[i] && s[i] == c)
+			i++;
+		while (s[i] && s[i] != c)
 		{
-			if (!inside_token)
-			{
-				++tokens;
-				inside_token = 42;
-			}
-			++s;
+			i++;
+			word_len++;
 		}
+		sfinal[word] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!sfinal[word])
+			return (free_arr(sfinal, word));
+		ft_put_word(sfinal[word], s, i, word_len);
+		word_len = 0;
+		word++;
 	}
-	return (tokens);
+	sfinal[word] = 0;
+	return (sfinal);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	tokens;
-	char	**token_v;
+	char			**sfinal;
+	unsigned int	num_words;
 
-	if (NULL == s)
-		return (NULL);
-	tokens = 0;
-	tokens = count_tokens(s, c);
-	token_v = malloc((tokens + 1) * sizeof(char *));
-	if (NULL == token_v)
-		return (NULL);
-	token_v[tokens] = NULL;
-	if (fill(token_v, s, c))
-		return (NULL);
-	return (token_v);
+	if (!s)
+		return (0);
+	num_words = ft_count_w(s, c);
+	sfinal = (char **)malloc(sizeof(char *) * (num_words + 1));
+	if (!sfinal)
+		return (0);
+	sfinal = ft_split_words(s, c, sfinal, num_words);
+	return (sfinal);
 }
